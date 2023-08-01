@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marcador Deportivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scoreboard">
+        <input type="text" id="team1Name" placeholder="Equipo 1">
+        <span id="team1Score">0</span>
+        <span> - </span>
+        <span id="team2Score">0</span>
+        <input type="text" id="team2Name" placeholder="Equipo 2">
+    </div>
+
+    <div class="container">
+        <h2>Temporizador</h2>
+        <input type="number" id="inputHoras" placeholder="Horas">
+        <input type="number" id="inputMinutos" placeholder="Minutos">
+        <input type="number" id="inputSegundos" placeholder="Segundos">
+        <button onclick="iniciarTemporizador()">Iniciar Temporizador</button>
+        <button onclick="detenerTemporizador()">Detener Temporizador</button>
+        <div id="temporizador">00:00:00</div>
+
+        <h2>Cronómetro</h2>
+        <button onclick="iniciarCronometro()">Iniciar Cronómetro</button>
+        <button onclick="detenerCronometro()">Detener Cronómetro</button>
+        <div id="cronometro">00:00:00</div>
+    </div>
+
+    <div class="current-time">
+        <p id="currentDateTime"></p>
+    </div>
+
+    <div class="theme-buttons">
+        <button onclick="changeToLightTheme()">Modo Claro</button>
+        <button onclick="changeToDarkTheme()">Modo Oscuro</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

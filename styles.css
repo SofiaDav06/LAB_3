@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.scoreboard {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.scoreboard input[type="text"] {
+    width: 200px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.scoreboard span {
+    margin: 0 10px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container h2 {
+    margin-top: 0;
+}
+
+.container input,
+.container button {
+    margin-right: 10px;
+}
+
+.current-time {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.current-time #currentDateTime {
+    font-size: 18px;
+}
+
+.theme-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.theme-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.light-theme {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
