@@ -2,60 +2,71 @@ let temporizadorInterval;
 let cronometroInterval;
 let cronometroInicio = 0;
 
-function incrementScore(teamNumber) {
-    const teamScoreElement = document.getElementById(`team${teamNumber}Score`);
-    let currentScore = parseInt(teamScoreElement.textContent);
-    currentScore++;
-    teamScoreElement.textContent = currentScore;
-}
-
-function decrementScore(teamNumber) {
-    const teamScoreElement = document.getElementById(`team${teamNumber}Score`);
-    let currentScore = parseInt(teamScoreElement.textContent);
-    if (currentScore > 0) {
-        currentScore--;
-        teamScoreElement.textContent = currentScore;
-    }
-}
-
-document.getElementById('team1Name').addEventListener('input', function () {
-    const teamName = this.value;
-    document.getElementById('team1Score').textContent = teamName ? teamName : '0';
-});
-
-document.getElementById('team2Name').addEventListener('input', function () {
-    const teamName = this.value;
-    document.getElementById('team2Score').textContent = teamName ? teamName : '0';
-});
-
 function iniciarTemporizador() {
-    // Resto del código del temporizador...
+    const horas = parseInt(document.getElementById('inputHoras').value);
+    const minutos = parseInt(document.getElementById('inputMinutos').value);
+    const segundos = parseInt(document.getElementById('inputSegundos').value);
+
+    const tiempoTotal = horas * 3600 + minutos * 60 + segundos;
+    let tiempoRestante = tiempoTotal;
+
+    temporizadorInterval = setInterval(function () {
+        const horasRestantes = Math.floor(tiempoRestante / 3600);
+        const minutosRestantes = Math.floor((tiempoRestante % 3600) / 60);
+        const segundosRestantes = tiempoRestante % 60;
+        document.getElementById('temporizador').textContent = `${formatoNumero(horasRestantes)}:${formatoNumero(minutosRestantes)}:${formatoNumero(segundosRestantes)}`;
+
+        if (tiempoRestante === 0) {
+            clearInterval(temporizadorInterval);
+            alert('¡Tiempo agotado!');
+        }
+        tiempoRestante--;
+    }, 1000);
 }
 
 function detenerTemporizador() {
-    // Resto del código del temporizador...
+    clearInterval(temporizadorInterval);
 }
 
 function iniciarCronometro() {
-    // Resto del código del cronómetro...
+    cronometroInicio = Date.now();
+    cronometroInterval = setInterval(actualizarCronometro, 1000);
 }
 
 function detenerCronometro() {
-    // Resto del código del cronómetro...
+    clearInterval(cronometroInterval);
+    document.getElementById('cronometro').textContent = '00:00:00';
+    cronometroInicio = 0;
 }
 
-function updateCurrentDateTime() {
-    // Resto del código para mostrar la fecha y hora actual...
+function actualizarCronometro() {
+    const tiempoTranscurrido = Date.now() - cronometroInicio;
+    const horas = Math.floor(tiempoTranscurrido / 3600000);
+    const minutos = Math.floor((tiempoTranscurrido % 3600000) / 60000);
+    const segundos = Math.floor((tiempoTranscurrido % 60000) / 1000);
+    document.getElementById('cronometro').textContent = `${formatoNumero(horas)}:${formatoNumero(minutos)}:${formatoNumero(segundos)}`;
 }
 
-setInterval(updateCurrentDateTime, 1000);
-
-function changeToLightTheme() {
-    document.body.classList.remove('dark-theme');
-    document.body.classList.add('light-theme');
+function formatoNumero(numero) {
+    return numero < 10 ? `0${numero}` : numero;
 }
 
-function changeToDarkTheme() {
-    document.body.classList.remove('light-theme');
-    document.body.classList.add('dark-theme');
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
+
+function incrementScore(team) {
+    const scoreElement = document.getElementById(`${team}Score`);
+    let currentScore = parseInt(scoreElement.textContent);
+    currentScore++;
+    scoreElement.textContent = currentScore;
+}
+
+function decrementScore(team) {
+    const scoreElement = document.getElementById(`${team}Score`);
+    let currentScore = parseInt(scoreElement.textContent);
+    if (currentScore > 0) {
+        currentScore--;
+        scoreElement.textContent = currentScore;
+    }
 }
