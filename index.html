@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Clockme</title>
+    <title>Temporizador y Cronómetro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,12 +56,13 @@
         <div id="cronometro" class="temporizador-grande">00:00:00</div>
         <div class="cronometro-buttons">
             <button onclick="iniciarCronometro()" class="boton-verde">Iniciar Cronómetro</button>
-            <button onclick="detenerCronometro()" class="boton-verde">Detener Cronómetro</button>
+            <button onclick="detenerCronometro()" class="boton-verde">Reiniciar Cronómetro</button>
         </div>
     </div>
 
     <div class="theme-toggle">
-        <button class="boton-negro" onclick="toggleTheme()">Modo Claro/Oscuro</button>
+        <button class="boton-negro" onclick="toggleTheme()"><i class="fa-solid fa-circle-half-stroke"></i> Modo Claro/Oscuro</button>
+          
     </div>
 
     <div class="fecha-hora-actual">
